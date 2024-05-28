@@ -1,0 +1,16 @@
+version: '3.3'
+
+services:
+  dagster:
+    image: dagster-image
+    ports:
+      - "127.0.0.1:4000:4000" 
+    volumes:
+      - /opt/Dagster/project-dagster-university/dagster_university:/opt/Dagster/project-dagster-university/dagster_university
+    command: dagster dev -h 0.0.0.0 -p 4000  
+    networks:
+      - test_network
+
+networks:
+  test_network:
+    driver: bridge
